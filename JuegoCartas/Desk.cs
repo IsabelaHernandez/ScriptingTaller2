@@ -1,8 +1,8 @@
 ﻿using System;
 
-public class Class1
+public class Desk
 {
-	public Class1()
+	public Desk()
 	{
 	}
 }
