@@ -1,12 +1,13 @@
 ﻿using System;
 
-public class Character
+public class Character : Carta
 {
+	Equip equip = new Equip(); 
 	public Character()
 	{
 		int AP = 0;
 		int RP = 1;
-		//Instanciar equip
+		
 	}
 
 	public void AttackPointsCh()

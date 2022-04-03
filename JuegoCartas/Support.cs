@@ -1,6 +1,6 @@
 ﻿using System;
 
-public class Support
+public class Support : Carta
 {
 	public Support()
 	{

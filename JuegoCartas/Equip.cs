@@ -1,6 +1,6 @@
 ﻿using System;
 
-public class Equip
+public class Equip : Carta
 {
 	public Equip()
 	{
