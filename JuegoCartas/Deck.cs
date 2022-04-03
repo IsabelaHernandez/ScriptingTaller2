@@ -1,8 +1,8 @@
 ﻿using System;
 
-public class Desk
+public class Deck
 {
-	public Desk()
+	public Deck()
 	{
 		String deskName = "";
 		int charcaterAmount = 0;
