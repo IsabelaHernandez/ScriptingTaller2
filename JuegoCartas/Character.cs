@@ -5,7 +5,7 @@ public class Character : Carta
 	public int AP = 0;
 	public int RP = 1;
 	public int cantidad;
-	affinity afinidad = affinity.Knight;
+	
 
 	 public Equip equip = new Equip(); 
 
@@ -29,7 +29,7 @@ public class Character : Carta
 
 			if (targetEquip != null)
 			{
-				if (afinidad == targetEquip.afinidadeq)
+				if (afinidadch == targetEquip.afinidadeq)
 				{
 					equip = targetEquip;
 				}

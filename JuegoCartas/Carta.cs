@@ -16,4 +16,14 @@ public class Carta
 		Mage,
 		Undead
 	}
+
+	static Random random = new Random();
+	static affinity RandomEnumValue<affinity>()
+	{
+		var values = Enum.GetValues(typeof(affinity));
+		return (affinity)values.GetValue(random.Next(values.Length));
+	}
+
+	public affinity afinidadeq = RandomEnumValue<affinity>();
+	public affinity afinidadch = RandomEnumValue<affinity>();
 }

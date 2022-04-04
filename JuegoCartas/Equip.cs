@@ -4,13 +4,8 @@ public class Equip : Carta
 {
 	Character character = new Character();
 	public int cantidad;
-	int EP = 0;	
-	public affinity afinidadeq = affinity.Knight;
-
-	//string[] TAarray = new string[3] { "AP", "RP", "ALL" };
-	//Random rnd = new Random();
-	//int index = rnd.Next(TAarray.Length);
-	//string TA = "";
+	int EP = 1;	
+	//public affinity afinidadeq = AffinityValue;
 
 	public enum TA
     {
@@ -19,17 +14,14 @@ public class Equip : Carta
 		ALL
     }
 
-
-	//Array values = Enum.GetValues(typeof(TA));
-	//Random random = new Random();
-	//TA randomTA = (TA)values.GetValue(random.Next(values.Length));
-
 	static Random random = new Random();
 	static TA RandomEnumValue<TA>()
 	{
 		var values = Enum.GetValues(typeof(TA));
 		return (TA)values.GetValue(random.Next(values.Length));
 	}
+
+	TA TAvalue = RandomEnumValue<TA>();
 
 	public Equip()
 	{
@@ -38,22 +30,22 @@ public class Equip : Carta
 
 	public void EffectEq()
 	{
-		/*switch (TAarray)
+		switch (TAvalue)
         {
-			case TA[0]:
-				character.AP += 1;
+			case TA.AP:
+				character.AP += EP;
 				break;
 
-			case "RP":
-				character.RP += 1;
+			case TA.RP:
+				character.RP += EP;
 				break;
 
-			case "ALL":
-				character.AP += 1;
-				character.RP += 1;
+			case TA.ALL:
+				character.AP += EP;
+				character.RP += EP;
 				break;
         }
-		*/
+		
 		
 		
 	}
