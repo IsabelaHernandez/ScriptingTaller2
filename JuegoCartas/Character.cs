@@ -2,11 +2,13 @@
 
 public class Character : Carta
 {
+	public int AP = 0;
+	public int RP = 1;
+	public int cantidad;
+
 	Equip equip = new Equip(); 
 	public Character()
 	{
-		int AP = 0;
-		int RP = 1;
 		
 	}
 
