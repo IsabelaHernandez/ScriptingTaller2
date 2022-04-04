@@ -19,10 +19,17 @@ public class Equip : Carta
 		ALL
     }
 
-	Array values = Enum.GetValues(typeof(TA));
-	Random random = new Random();
-	TA randomTA = (TA)values.GetValue(random.Next(values.Length));
 
+	//Array values = Enum.GetValues(typeof(TA));
+	//Random random = new Random();
+	//TA randomTA = (TA)values.GetValue(random.Next(values.Length));
+
+	static Random random = new Random();
+	static TA RandomEnumValue<TA>()
+	{
+		var values = Enum.GetValues(typeof(TA));
+		return (TA)values.GetValue(random.Next(values.Length));
+	}
 
 	public Equip()
 	{
@@ -31,7 +38,7 @@ public class Equip : Carta
 
 	public void EffectEq()
 	{
-		switch (TAarray)
+		/*switch (TAarray)
         {
 			case TA[0]:
 				character.AP += 1;
@@ -46,7 +53,7 @@ public class Equip : Carta
 				character.RP += 1;
 				break;
         }
-
+		*/
 		
 		
 	}
