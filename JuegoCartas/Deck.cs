@@ -2,10 +2,6 @@
 
 public class Deck
 {
-	private Character characterCard;
-	private Equip equipCard;
-	private Support supportCard;
-
 	public Deck()
 	{
 		String deskName = "";
@@ -14,10 +10,6 @@ public class Deck
 		int supportAmount = 0;
 
 		//Aquí va a llamar la agregación de las cartas
-		characterCard = new Character();
-		equipCard = new Equip();
-		supportCard = new Support();
-
 	}
 
 	public void LlenarDeck()
