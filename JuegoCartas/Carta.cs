@@ -10,7 +10,7 @@ public class Carta
 	{
 		
 	}
-	enum affinity
+	public enum affinity
 	{
 		Knight,
 		Mage,

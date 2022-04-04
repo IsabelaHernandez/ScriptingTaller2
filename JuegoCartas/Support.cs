@@ -9,6 +9,9 @@ public class Support : Carta
 	Character character = new Character();
 	private Character target;
 
+	public Character jugador = new Character();
+	public Character enemigo = new Character();
+
 	public Support()
 	{
 		
@@ -20,17 +23,18 @@ public class Support : Carta
 	}
 	public void EffectSp()
 	{
-		//if (target == jugador)
+		if (target == jugador)
 		{
 			character.RP += 1;
 		}
+	
+		if (target == enemigo)
+		{
+			character.AP -= 1;
+			character.RP -= 1;
 
-
-		//Afecta al enemigo
-
-		character.AP -= 1;
-		character.RP -= 1;
-		//Destruir carta equipo
+			character.equip = null;
+		}
 	}
 }
 
