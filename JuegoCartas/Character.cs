@@ -29,7 +29,7 @@ public class Character : Carta
 
 			if (targetEquip != null)
 			{
-				if (afinidadch == targetEquip.afinidadeq)
+				if (afinidadCh == targetEquip.afinidadEq)
 				{
 					equip = targetEquip;
 				}

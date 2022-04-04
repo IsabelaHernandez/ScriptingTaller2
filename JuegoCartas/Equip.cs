@@ -2,35 +2,37 @@
 
 public class Equip : Carta
 {
-	Character character = new Character();
-	public int cantidad;
-	int EP = 1;	
-	//public affinity afinidadeq = AffinityValue;
-
+	//Target Atributtes:
 	public enum TA
-    {
+	{
 		AP,
 		RP,
 		ALL
-    }
+	}
 
+	public int cantidad; //Cantidad de cartas de tipo Equip en el Deck
+	int EP = 1;
+	//public Affinity afinidadeq = AffinityValue;
+
+	Character character = new Character();
 	static Random random = new Random();
-	static TA RandomEnumValue<TA>()
+
+	static TA RandomTAValue<TA>()
 	{
 		var values = Enum.GetValues(typeof(TA));
 		return (TA)values.GetValue(random.Next(values.Length));
 	}
 
-	TA TAvalue = RandomEnumValue<TA>();
+	TA TAValue = RandomTAValue<TA>();
 
 	public Equip()
 	{
-		
+		//El constructor solo lo usariamos si decidimos usar el get y set para las variables
 	}
 
 	public void EffectEq()
 	{
-		switch (TAvalue)
+		switch (TAValue)
         {
 			case TA.AP:
 				character.AP += EP;
@@ -44,9 +46,7 @@ public class Equip : Carta
 				character.AP += EP;
 				character.RP += EP;
 				break;
-        }
-		
-		
+        }	
 		
 	}
 
