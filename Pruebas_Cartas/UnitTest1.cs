@@ -11,6 +11,8 @@ namespace Pruebas_Cartas
         [TestMethod]
         public void TestDeck()
         {
+            Deck deckTest01 = new Deck();
+            
             //El Deck cumple con los límites de cartas 
         }
         [TestMethod]

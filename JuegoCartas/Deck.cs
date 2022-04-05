@@ -8,9 +8,14 @@ public class Deck
 	int equipAmount = 0;
 	int supportAmount = 0;
 
-	int chcantidad = 5;
-	int eqcantidad = 10;
-	int spcantidad = 5;
+	int chCantidad = 5;
+	int eqCantidad = 10;
+	int spCantidad = 5;
+
+	//Contadores de cartas dentro del Maso
+	public int chInsedeDeck = 0;
+	public int eqInsedeDeck = 0;
+	public int spIndideDeck = 0;
 
 	int CPbaraja= 30;
 
@@ -38,6 +43,7 @@ public class Deck
 		if (CPbaraja <= CP)
 		{
 			cartas.Add(character);
+			chInsedeDeck++;
 		}
 		
 	}	
@@ -56,6 +62,7 @@ public class Deck
 		if (CPbaraja <= CP )
         {
 			cartas.Add(equip);
+			eqInsedeDeck++;
 		}		
 
 	}
@@ -74,6 +81,7 @@ public class Deck
 		if (CPbaraja <= CP)
 		{
 			cartas.Add(support);
+			spIndideDeck++;
 		}
 		
 		
@@ -85,18 +93,18 @@ public class Deck
 
 		while (CPbaraja < 0)
 		{
-
-			for (int i = 0; i <= chcantidad; i++)
+			//En caso de tener problemas, usar los contadores de cartas aquí
+			for (int i = 0; i <= chCantidad; i++)
 			{
 				CreateCharacter();
 			}
 
-			for (int i = 0; i <= eqcantidad; i++)
+			for (int i = 0; i <= eqCantidad; i++)
 			{
 				CreateEquip();
 			}
 
-			for (int i = 0; i <= spcantidad; i++)
+			for (int i = 0; i <= spCantidad; i++)
 			{
 				CreateSupport();
 			}
