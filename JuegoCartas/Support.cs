@@ -15,12 +15,7 @@ public class Support : Carta
 	Random aleatorioep = new Random();
 	static Random random = new Random();
 
-	Character character = new Character();
-	private Character target;
 	private int baseEP;
-
-	public Character jugador = new Character();
-	public Character enemigo = new Character();
 
 	//Random Enum
 	static EffectType RandomEffectTypeValue<EffectType>()
@@ -42,37 +37,43 @@ public class Support : Carta
 		private set => baseEP = value;
 	}
 
-	public void AssignTarget(Character character)
+	public void a() 
 	{
-		target = character;
+	
 	}
 
-	public void EffectSp()
+	public void b()
+    {
+
+    }
+	public void EffectSp(Character character)
 	{
-		if (target == jugador && ETValue == EffectType.RestoreRP) 
+		if (ETValue == EffectType.RestoreRP) 
 		{
-			character.rp += EP;
+			character.ModifyRP((int)EP);
 		}
 	
-		if (target == enemigo)
+		else
 		{
 			switch (ETValue)
             {
 				case EffectType.ReduceAll:
-					character.ap -= EP;
-					character.rp -= EP;
+					character.target.ModifyAP(-(int)EP);
+					character.target.ModifyRP(-(int)EP);
 					break;
 
 				case EffectType.ReduceAP:
-					character.ap -= EP;
+					character.target.ModifyAP(-(int)EP);
 					break;
 
 				case EffectType.ReduceRP:
-					character.rp -= EP;
+					character.target.ModifyRP(-(int)EP);
 					break;
 
 				case EffectType.DestroyEquip:
-					character.equip = null;
+					EP = 0;
+					character.target.equip = null;
+
 					break;
 
 			}

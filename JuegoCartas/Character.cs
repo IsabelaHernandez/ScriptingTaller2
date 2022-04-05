@@ -2,7 +2,7 @@
 
 public class Character : Carta 
 {
-
+	
 	public int ap = 0;
 	public int rp = 0;
 
@@ -12,11 +12,11 @@ public class Character : Carta
 	private int baseRP;
 	private int baseCP;
 
-	public Equip equip = new Equip();
-
 	private Equip slot1;
 	private Equip slot2;
 	private Equip slot3;
+
+	public Character target;
 
 	private Equip associatedEquip;
 
@@ -85,17 +85,43 @@ public class Character : Carta
 			{
 				if (afinidadCh == targetEquip.afinidadEq)
 				{
-					//equip = targetEquip;
 					AssociatedEquip(targetEquip);
 				}
 			}
 
 		}
+	} 
+
+	public void ModifyRP(int delta) 
+	{
+		RP += delta;
 	}
 
-	public void AffinityCh()
+	public void ModifyAP(int delta)
 	{
+		AP += delta;
+	}
 
+
+	public void AssignTarget(Character character)
+	{
+		target = character;
+	}
+
+
+	public void AffinityCh(Character target)
+	{
+		if ((afinidadCh == Affinity.Knight && target.afinidadCh == Affinity.Mage)|| (afinidadCh == Affinity.Mage && target.afinidadCh == Affinity.Undead)||(afinidadCh == Affinity.Undead && target.afinidadCh == Affinity.Knight))
+        {
+			ModifyAP(1);
+			target.ModifyAP(-1);
+        }
+
+		if ((target.afinidadCh == Affinity.Knight && afinidadCh == Affinity.Mage) || (target.afinidadCh == Affinity.Mage && afinidadCh == Affinity.Undead) || (target.afinidadCh == Affinity.Undead && afinidadCh == Affinity.Knight))
+        {
+			ModifyAP(-1);
+			target.ModifyAP(1);
+		}
 	}
 
 }

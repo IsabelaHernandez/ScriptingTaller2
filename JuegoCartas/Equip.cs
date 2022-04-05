@@ -14,7 +14,6 @@ public class Equip : Carta
 	static Random random = new Random();
 
 	private int baseEP;
-	//Character character = new Character();
 	
 	//Random Enum
 	static TA RandomTAValue<TA>()
@@ -36,22 +35,22 @@ public class Equip : Carta
 		private set => baseEP = value;
 	}
 
-	public void EffectEq()
+	public void EffectEq(Character target)
 	{
 		switch (TAValue)
         {
 			case TA.AP:
-				character.ap += EP;
+				target.ModifyAP((int)EP); 
 				
 				break;
 
 			case TA.RP:
-				character.rp += EP;
+				target.ModifyRP((int)EP);
 				break;
 
-			case TA.ALL:
-				character.ap += EP;
-				character.rp += EP;
+			case TA.ALL:				
+				target.ModifyAP((int)EP);
+				target.ModifyRP((int)EP);
 				break;
         }	
 		
