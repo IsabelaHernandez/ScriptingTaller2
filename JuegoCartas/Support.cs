@@ -1,7 +1,9 @@
 ﻿using System;
 
-public class Support : Carta
+public class Support : Carta, IRandom
 {
+	Random aleatorio = new Random();
+
 	public enum EffectType
 	{
 		ReduceAP,
@@ -29,10 +31,16 @@ public class Support : Carta
 
 	EffectType ETValue = RandomEffectTypeValue<EffectType>();
 
-
 	public Support()
 	{
-		
+		EP = aleatorio.Next(1, 7);
+	}
+	int RandomAtributtesValues(int delta)
+	{
+		var random = new Random(delta);
+		var value = random.Next(0, 6);
+
+		return value;
 	}
 
 	public void AssignTarget(Character character)
@@ -44,7 +52,7 @@ public class Support : Carta
 	{
 		if (target == jugador && ETValue == EffectType.RestoreRP) 
 		{
-			character.RP += EP;
+			character.rp += EP;
 		}
 	
 		if (target == enemigo)
@@ -52,16 +60,16 @@ public class Support : Carta
 			switch (ETValue)
             {
 				case EffectType.ReduceAll:
-					character.AP -= EP;
-					character.RP -= EP;
+					character.ap -= EP;
+					character.rp -= EP;
 					break;
 
 				case EffectType.ReduceAP:
-					character.AP -= EP;
+					character.ap -= EP;
 					break;
 
 				case EffectType.ReduceRP:
-					character.RP -= EP;
+					character.rp -= EP;
 					break;
 
 				case EffectType.DestroyEquip:

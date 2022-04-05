@@ -1,6 +1,6 @@
 ﻿using System;
 
-public class Carta
+public abstract class Carta : IRandom
 {
 	public enum Affinity
 	{
@@ -9,11 +9,12 @@ public class Carta
 		Undead
 	}
 
-	string name = "";
-	string[] rarity = new string[4] { "Common", "Rare", "SuperRare", "Ultra Rare" };
-	int CP = 1;
+	public string name = "";
+	public string[] rarity = new string[4] { "Common", "Rare", "SuperRare", "Ultra Rare" };
+	public int CP = 1;
 
 	static Random random = new Random();
+
 
 	public Carta()
 	{

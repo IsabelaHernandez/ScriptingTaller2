@@ -1,7 +1,10 @@
 ﻿using System;
 
-public class Equip : Carta
+public class Equip : Carta, IRandom
 {
+
+	Random aleatorio = new Random();
+
 	//Target Atributtes:
 	public enum TA
 	{
@@ -27,7 +30,17 @@ public class Equip : Carta
 
 	public Equip()
 	{
+		EP = aleatorio.Next(1, 7);
+
 		//El constructor solo lo usariamos si decidimos usar el get y set para las variables
+	}
+
+	int RandomAtributtesValues(int delta)
+	{
+		var random = new Random(delta);
+		var value = random.Next(0, 6);
+
+		return value;
 	}
 
 	public void EffectEq()
@@ -35,16 +48,16 @@ public class Equip : Carta
 		switch (TAValue)
         {
 			case TA.AP:
-				character.AP += EP;
+				character.ap += EP;
 				break;
 
 			case TA.RP:
-				character.RP += EP;
+				character.rp += EP;
 				break;
 
 			case TA.ALL:
-				character.AP += EP;
-				character.RP += EP;
+				character.ap += EP;
+				character.rp += EP;
 				break;
         }	
 		
