@@ -2,7 +2,6 @@
 
 public class Support : Carta
 {
-
 	public enum EffectType
 	{
 		ReduceAP,
@@ -11,11 +10,9 @@ public class Support : Carta
 		DestroyEquip,
 		RestoreRP
 	}
-
-	Random aleatorioep = new Random();
+	private int baseEP;
 	static Random random = new Random();
 
-	private int baseEP;
 
 	//Random Enum
 	static EffectType RandomEffectTypeValue<EffectType>()
@@ -26,16 +23,16 @@ public class Support : Carta
 
 	EffectType ETValue = RandomEffectTypeValue<EffectType>();
 
-	public Support(int ep, int cp)
-	{
-		EP = ep;
-		CP = cp;
-	}
-
 	public int EP
 	{
 		get => baseEP;
 		private set => baseEP = value;
+	}
+
+	public Support(int ep, int cp)
+	{
+		EP = ep;
+		CP = cp;
 	}
 
 	public void EffectSp(Character character)
@@ -44,7 +41,6 @@ public class Support : Carta
 		{
 			character.ModifyRP((int)EP);
 		}
-	
 		else
 		{
 			switch (ETValue)
@@ -65,11 +61,10 @@ public class Support : Carta
 				case EffectType.DestroyEquip:
 					EP = 0;
 					character.target.DisassociatedEquip();
-
 					break;
-
 			}
 		}
 	}
+
 }
 

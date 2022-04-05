@@ -2,15 +2,14 @@
 
 public class Character : Carta 
 {
-	
-	public int ap = 0;
-	public int rp = 0;
+	//public int ap = 0;
+	//public int rp = 0;
 
 	public bool fullequiped = false;
 
 	private int baseAP;
 	private int baseRP;
-	private int baseCP;
+
 
 	private Equip slot1;
 	private Equip slot2;
@@ -57,17 +56,14 @@ public class Character : Carta
         {
 			slot1 = associatedEquip;
         }
-
 		else if (slot2 == null)
 		{
 			slot2 = associatedEquip;
 		}
-
 		else if (slot3 == null)
 		{
 			slot3 = associatedEquip;
 		}
-
 		else
         {
 			fullequiped = true;
@@ -81,12 +77,10 @@ public class Character : Carta
         {
 			slot3 = null;
         }
-
 		else if (slot2 != null)
 		{
 			slot2 = null;
 		}
-
 		else if (slot1 != null)
 		{
 			slot1 = null;

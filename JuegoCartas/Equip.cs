@@ -10,10 +10,9 @@ public class Equip : Carta
 		ALL
 	}
 
-	Random aleatorioep = new Random();
+	private int baseEP;
 	static Random random = new Random();
 
-	private int baseEP;
 	
 	//Random Enum
 	static TA RandomTAValue<TA>()

@@ -15,7 +15,6 @@ public abstract class Carta
 
 	static Random random = new Random();
 
-
 	public Carta()
 	{
 		

@@ -1,7 +1,8 @@
 ﻿public interface IRandom
 {
-    int RandomAtributtesValues(int delta) { return 0; }
-
+	//Tal como van las cosas esta Interfás no vamos a terminar usando 
+	int RandomAtributtesValues(int delta) { return 0; }
+	
 	/*int RandomAtributtesValues(int delta)
 	{
 		var random = new Random(delta);
