@@ -75,6 +75,23 @@ public class Character : Carta
 
 	}
 
+	public void DisassociatedEquip()
+    {
+		if (slot3 != null)
+        {
+			slot3 = null;
+        }
+
+		else if (slot2 != null)
+		{
+			slot2 = null;
+		}
+
+		else if (slot1 != null)
+		{
+			slot1 = null;
+		}
+	}
 
 	public void EquipCh(Equip targetEquip)
 	{

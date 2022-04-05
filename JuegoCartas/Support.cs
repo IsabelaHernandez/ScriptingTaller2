@@ -26,9 +26,10 @@ public class Support : Carta
 
 	EffectType ETValue = RandomEffectTypeValue<EffectType>();
 
-	public Support(int ep)
+	public Support(int ep, int cp)
 	{
 		EP = ep;
+		CP = cp;
 	}
 
 	public int EP
@@ -37,15 +38,6 @@ public class Support : Carta
 		private set => baseEP = value;
 	}
 
-	public void a() 
-	{
-	
-	}
-
-	public void b()
-    {
-
-    }
 	public void EffectSp(Character character)
 	{
 		if (ETValue == EffectType.RestoreRP) 
@@ -72,7 +64,7 @@ public class Support : Carta
 
 				case EffectType.DestroyEquip:
 					EP = 0;
-					character.target.equip = null;
+					character.target.DisassociatedEquip();
 
 					break;
 

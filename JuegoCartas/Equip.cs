@@ -24,9 +24,10 @@ public class Equip : Carta
 
 	TA TAValue = RandomTAValue<TA>();
 
-	public Equip( int ep)
+	public Equip( int ep, int cp)
 	{
-		EP = ep;		
+		EP = ep;
+		CP = cp;
 	}
 
 	public int EP

@@ -12,9 +12,10 @@ public class Deck
 	int eqcantidad = 10;
 	int spcantidad = 5;
 
+	int CPbaraja= 30;
+
 	List<Carta> cartas = new List<Carta>();
 		
-
 	public Deck()
 	{	
 		
@@ -28,20 +29,34 @@ public class Deck
 
 		int AP = aleatorioap.Next(1, 6);
 		int RP = aleatoriorp.Next(1, 6);
-		int CP = aleatoriocp.Next(1, 6);
+		int CP = aleatoriocp.Next(1, 11);
 
 		Character character = new Character(AP, RP, CP);
-		cartas.Add(character);
+
+		CPbaraja -= CP;
+
+		if (CPbaraja <= CP)
+		{
+			cartas.Add(character);
+		}
+		
 	}	
 
 	public void CreateEquip ()
 	{
 		Random aleatoriocp = new Random();
 
-		int CP = aleatoriocp.Next(1, 6);
+		int EP = aleatoriocp.Next(1, 6);
+		int CP = aleatoriocp.Next(1, 11);
 
-		Equip equip = new Equip();
-		cartas.Add(equip);
+		Equip equip = new Equip(EP, CP);
+
+		CPbaraja -= CP;
+
+		if (CPbaraja <= CP )
+        {
+			cartas.Add(equip);
+		}		
 
 	}
 
@@ -49,10 +64,18 @@ public class Deck
 	{
 		Random aleatoriocp = new Random();
 
-		int CP = aleatoriocp.Next(1, 6);
+		int EP = aleatoriocp.Next(1, 6);
+		int CP = aleatoriocp.Next(1, 11);
 
-		Support support = new Support();
-		cartas.Add(support);
+		Support support = new Support(EP, CP);
+
+		CPbaraja -= CP;
+
+		if (CPbaraja <= CP)
+		{
+			cartas.Add(support);
+		}
+		
 		
 	}
 
@@ -60,26 +83,25 @@ public class Deck
     {
 		//Llena la baraja con las cartas
 
-		for (int i = 0; i <= chcantidad; i++)
-        {
-			CreateCharacter();
-			
-		}
-
-		for (int i = 0; i <= eqcantidad; i++)
+		while (CPbaraja < 0)
 		{
-			CreateEquip();
-		}
 
-		for (int i = 0; i <= spcantidad; i++)
-		{
-			CreateSupport();
-		}
+			for (int i = 0; i <= chcantidad; i++)
+			{
+				CreateCharacter();
+			}
 
+			for (int i = 0; i <= eqcantidad; i++)
+			{
+				CreateEquip();
+			}
 
-		/*Hacer un sistemita de slots que nos permita llenar la cantidad
-		adecuanda de cartas usando los CP */
+			for (int i = 0; i <= spcantidad; i++)
+			{
+				CreateSupport();
+			}
 
+		}		
 
 	}
 	public void DestruirDeck()
