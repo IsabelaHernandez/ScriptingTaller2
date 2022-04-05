@@ -1,8 +1,7 @@
 ﻿using System;
 
-public class Support : Carta, IRandom
+public class Support : Carta
 {
-	Random aleatorio = new Random();
 
 	public enum EffectType
 	{
@@ -13,16 +12,17 @@ public class Support : Carta, IRandom
 		RestoreRP
 	}
 
-	int EP = 1;
-	public int cantidad;
+	Random aleatorioep = new Random();
+	static Random random = new Random();
 
 	Character character = new Character();
 	private Character target;
+	private int baseEP;
 
 	public Character jugador = new Character();
 	public Character enemigo = new Character();
-	static Random random = new Random();
 
+	//Random Enum
 	static EffectType RandomEffectTypeValue<EffectType>()
 	{
 		var values = Enum.GetValues(typeof(EffectType));
@@ -31,16 +31,15 @@ public class Support : Carta, IRandom
 
 	EffectType ETValue = RandomEffectTypeValue<EffectType>();
 
-	public Support()
+	public Support(int ep)
 	{
-		EP = aleatorio.Next(1, 7);
+		EP = ep;
 	}
-	int RandomAtributtesValues(int delta)
-	{
-		var random = new Random(delta);
-		var value = random.Next(0, 6);
 
-		return value;
+	public int EP
+	{
+		get => baseEP;
+		private set => baseEP = value;
 	}
 
 	public void AssignTarget(Character character)

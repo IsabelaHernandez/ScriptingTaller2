@@ -3,12 +3,9 @@
 public class Character : Carta 
 {
 
-	Random aleatorio = new Random();
-
 	public int ap = 0;
 	public int rp = 0;
 
-	public int cantidad;
 	public bool fullequiped = false;
 
 	private int baseAP;
@@ -23,19 +20,21 @@ public class Character : Carta
 
 	private Equip associatedEquip;
 
-	public Character()
+	
+	public Character(int ap, int rp, int cp)
 	{
 		//Random atributos
-		AP = aleatorio.Next(1, 6);
-		RP = aleatorio.Next(1, 6);
-		CP = aleatorio.Next(1, 6);
+
+		AP = ap;
+		RP = rp;
+		CP = cp;
+	
 	}
 
 	public int AP
 	{
 		get => baseAP;
-		private set => baseAP = value;
-		
+		private set => baseAP = value;		
 	}
 
 	public int RP
@@ -43,14 +42,6 @@ public class Character : Carta
 		get => baseRP;
 		private set => baseRP = value;
 	}
-
-
-	/*public Character( int ap, int rp, int cp)
-    {
-		AP = ap;
-		RP = rp;
-		CP = cp;
-    } */
 
 
 	public void AttackPointsCh()

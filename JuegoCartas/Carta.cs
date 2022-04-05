@@ -1,6 +1,6 @@
 ﻿using System;
 
-public abstract class Carta : IRandom
+public abstract class Carta 
 {
 	public enum Affinity
 	{

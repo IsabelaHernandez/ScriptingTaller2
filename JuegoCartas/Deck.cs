@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 public class Deck
 {
@@ -7,10 +8,51 @@ public class Deck
 	int equipAmount = 0;
 	int supportAmount = 0;
 
-	Character character = new Character();
+	int chcantidad = 5;
+	int eqcantidad = 10;
+	int spcantidad = 5;
+
+	List<Carta> cartas = new List<Carta>();
+		
 
 	public Deck()
 	{	
+		
+	}
+
+	public void CreateCharacter()
+    {
+		Random aleatorioap = new Random();
+		Random aleatoriorp = new Random();
+		Random aleatoriocp = new Random();
+
+		int AP = aleatorioap.Next(1, 6);
+		int RP = aleatoriorp.Next(1, 6);
+		int CP = aleatoriocp.Next(1, 6);
+
+		Character character = new Character(AP, RP, CP);
+		cartas.Add(character);
+	}	
+
+	public void CreateEquip ()
+	{
+		Random aleatoriocp = new Random();
+
+		int CP = aleatoriocp.Next(1, 6);
+
+		Equip equip = new Equip();
+		cartas.Add(equip);
+
+	}
+
+	public void CreateSupport()
+	{
+		Random aleatoriocp = new Random();
+
+		int CP = aleatoriocp.Next(1, 6);
+
+		Support support = new Support();
+		cartas.Add(support);
 		
 	}
 
@@ -18,16 +60,27 @@ public class Deck
     {
 		//Llena la baraja con las cartas
 
-		Character character = new Character();
-		Support support = new Support();
-		Equip equip = new Equip();
+		for (int i = 0; i <= chcantidad; i++)
+        {
+			CreateCharacter();
+			
+		}
+
+		for (int i = 0; i <= eqcantidad; i++)
+		{
+			CreateEquip();
+		}
+
+		for (int i = 0; i <= spcantidad; i++)
+		{
+			CreateSupport();
+		}
+
 
 		/*Hacer un sistemita de slots que nos permita llenar la cantidad
 		adecuanda de cartas usando los CP */
 
-		character.cantidad = 5;
-		support.cantidad = 5;
-		equip.cantidad = 10;
+
 	}
 	public void DestruirDeck()
     {
