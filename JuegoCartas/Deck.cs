@@ -19,7 +19,7 @@ public class Deck
 
 	int CPbaraja= 30;
 
-	List<Carta> cartas = new List<Carta>();
+	public List<Carta> cartas = new List<Carta>();
 		
 	public Deck()
 	{	

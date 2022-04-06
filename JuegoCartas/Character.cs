@@ -33,13 +33,13 @@ public class Character : Carta
 	public int AP
 	{
 		get => baseAP;
-		private set => baseAP = value;		
+		set => baseAP = value;		
 	}
 
 	public int RP
 	{
 		get => baseRP;
-		private set => baseRP = value;
+		set => baseRP = value;
 	}
 
 
