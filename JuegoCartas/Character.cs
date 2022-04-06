@@ -10,10 +10,11 @@ public class Character : Carta
 	private int baseAP;
 	private int baseRP;
 
-
 	private Equip slot1;
 	private Equip slot2;
 	private Equip slot3;
+
+	public Equip lastEquiped;
 
 	public Character target;
 
@@ -55,6 +56,8 @@ public class Character : Carta
 		if (slot1 == null)
         {
 			slot1 = associatedEquip;
+			lastEquiped = associatedEquip;
+
 			associatedEquip.TAValue = Equip.TA.AP;
 			ModifyAP(associatedEquip.EP);
 
@@ -62,12 +65,16 @@ public class Character : Carta
 		else if (slot2 == null)
 		{
 			slot2 = associatedEquip;
+			lastEquiped = associatedEquip;
+
 			associatedEquip.TAValue = Equip.TA.RP;
 			ModifyRP(associatedEquip.EP);
 		}
 		else if (slot3 == null)
 		{
 			slot3 = associatedEquip;
+			lastEquiped = associatedEquip;
+
 			associatedEquip.TAValue = Equip.TA.ALL;
 			ModifyAP(associatedEquip.EP);
 			ModifyRP(associatedEquip.EP);
@@ -85,6 +92,8 @@ public class Character : Carta
 		if (slot3 != null)
         {
 			slot3 = null;
+			lastEquiped = slot2;
+
 			ModifyAP(-(disassociatedEquip.EP));
 			ModifyRP(-(disassociatedEquip.EP));
 
@@ -92,11 +101,15 @@ public class Character : Carta
 		else if (slot2 != null)
 		{
 			slot2 = null;
+			lastEquiped = slot1;
+
 			ModifyRP(-(disassociatedEquip.EP));
 		}
 		else if (slot1 != null)
 		{
 			slot1 = null;
+			lastEquiped = null;
+
 			ModifyAP(-(disassociatedEquip.EP));
 		}
 	}
@@ -128,10 +141,10 @@ public class Character : Carta
 	}
 
 
-	/*public void AssignTarget(Character character)
+	public void AssignTarget(Character character)
 	{
 		target = character;
-	}*/
+	}
 
 
 	public void AffinityCh(Character target)

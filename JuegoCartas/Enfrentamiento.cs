@@ -9,7 +9,7 @@ public class Enfrentamiento
 
     public Enfrentamiento()
     {
-        String winner = "Aún no poseemos un ganador de este encuentro";
+       
     }
     
     public void BatallaAMuerte()
@@ -52,14 +52,14 @@ public class Enfrentamiento
                 }
             }
 
-
+            //Pelea ppal
             for (int i = 0; i < jugador.cartas.Count && i < enemigo.cartas.Count ; i++)
             {
                 if(jugador.cartas[i] is Character && enemigo.cartas[i] is Character)
                 {
 
-                   // (jugador.cartas[i] as Character).AssignTarget(enemigo.cartas[i] as Character);
-                   //(enemigo.cartas[i] as Character).AssignTarget(jugador.cartas[i] as Character);
+                   (jugador.cartas[i] as Character).AssignTarget(enemigo.cartas[i] as Character);
+                   (enemigo.cartas[i] as Character).AssignTarget(jugador.cartas[i] as Character);
 
                     (jugador.cartas[i] as Character).AffinityCh(enemigo.cartas[i] as Character);
                   
@@ -68,7 +68,7 @@ public class Enfrentamiento
 
                     if ((jugador.cartas[i] as Character).RP <= 0)
                     {
-                        enemigo.cartas[i] = null;
+                        jugador.cartas[i] = null;
                     }
 
                     if ((enemigo.cartas[i] as Character).RP <= 0)
@@ -80,6 +80,50 @@ public class Enfrentamiento
                 }
             }
 
+            //Support Skills
+            for (int i = 0; i < jugador.cartas.Count; i++)
+            {
+
+                if (jugador.cartas[i] is Character)
+                {
+                    actualChar = (jugador.cartas[i] as Character);
+
+                }
+
+                if (jugador.cartas[i] is Support)
+                {
+                    (jugador.cartas[i] as Support).EffectSp(actualChar);
+                }
+
+            }
+
+            for (int i = 0; i < enemigo.cartas.Count; i++)
+            {
+                if (enemigo.cartas[i] is Character)
+                {
+                    actualChar = (enemigo.cartas[i] as Character);
+                }
+
+                if (enemigo.cartas[i] is Support)
+                {
+                    (enemigo.cartas[i] as Support).EffectSp(actualChar);
+                }
+            }
+
+
+            //Revisión muertos
+            for (int i = 0; i < jugador.cartas.Count && i < enemigo.cartas.Count; i++)
+            {
+                if ((jugador.cartas[i] as Character).RP <= 0)
+                {
+                    jugador.cartas[i] = null;
+                }
+
+                if ((enemigo.cartas[i] as Character).RP <= 0)
+                {
+                    enemigo.cartas[i] = null;
+                }
+            }
         }
     }
 }

@@ -60,7 +60,12 @@ public class Support : Carta
 
 				case EffectType.DestroyEquip:
 					EP = 0;
-					character.target.DisassociatedEquip();
+
+					if (character.target.lastEquiped != null)
+                    {
+						character.target.DisassociatedEquip(character.target.lastEquiped);
+					}
+					
 					break;
 			}
 		}
