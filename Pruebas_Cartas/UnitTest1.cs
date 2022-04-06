@@ -113,10 +113,18 @@ namespace Pruebas_Cartas
         [TestMethod]
         public void TestChAttack()
         {
-            //El Character ataca a un Ch enemigo según sus atributos
-            //Enfrentamiento Batalla01 = new Enfrentamiento();
-            //Batalla01.BatallaAMuerte();
+            int ap = 2;
+            int apEnemigo = 3;
+            int rp = 5;
+            int cp = 0;
 
+            Character jugador = new Character(ap, rp, cp);
+            Character enemigo = new Character(apEnemigo, rp, cp);
+
+            jugador.RP -= enemigo.AP;
+            enemigo.RP -= jugador.AP;
+            Assert.AreEqual(3, jugador.RP);
+            Assert.AreEqual(2, enemigo.RP);
 
         }
         [TestMethod]
@@ -124,8 +132,11 @@ namespace Pruebas_Cartas
         {
             //Cuanndo su RP llega a cero el Character es destruido
             //Revisión muertos
+            Enfrentamiento Batalla02 = new Enfrentamiento();
+            Batalla02.BatallaAMuerte();
 
-
+            Assert.AreNotEqual(0, Batalla02.enemigo.ContadorDeMuertos);
+            Assert.AreNotEqual(0, Batalla02.jugador.ContadorDeMuertos);
         }
         [TestMethod]
         public void TestEquipTA()
@@ -158,10 +169,6 @@ namespace Pruebas_Cartas
         {
             //DestroyEquip solo puede destruir una carta a la vez
         }
-        [TestMethod]
-        public void TestCardPermaDeath()
-        {
-            //Nada de resurección, la destrucción de una carta es permamente  
-        }
+  
     }
 }

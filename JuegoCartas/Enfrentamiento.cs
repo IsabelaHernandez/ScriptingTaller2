@@ -79,7 +79,6 @@ public class Enfrentamiento
 
             }
         }
-
         //Support Skills
         for (int i = 0; i < jugador.cartas.Count; i++)
         {
@@ -109,7 +108,6 @@ public class Enfrentamiento
                 (enemigo.cartas[i] as Support).EffectSp(actualChar);
             }
         }
-
 
         //Revisión muertos
         for (int i = 0; i < jugador.cartas.Count && i < enemigo.cartas.Count; i++)
