@@ -16,6 +16,8 @@ public class Deck
 
 	public int CPbaraja= 30;
 
+	public int ContadorDeMuertos = 0;
+
 	public List<Carta> cartas = new List<Carta>();
 		
 	public Deck()

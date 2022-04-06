@@ -57,6 +57,60 @@ namespace Pruebas_Cartas
             Assert.AreNotEqual(0, actualChar.CP); 
         }
         [TestMethod]
+        public void TestEqAttributes()
+        {
+            //Equip posee todos los atributos
+            int EP = 0;
+            int CP = 0;
+
+            Equip actualEq = new Equip(EP, CP);
+
+            Deck deckTest05 = new Deck();
+            deckTest05.CreateEquip();
+
+            //Equip Character
+            for (int i = 0; i < deckTest05.cartas.Count; i++)
+            {
+
+                if (deckTest05.cartas[i] is Equip)
+                {
+                    actualEq = (deckTest05.cartas[i] as Equip);
+                }
+            }
+            actualEq = (Equip)deckTest05.cartas[0];
+
+            Assert.IsNotNull(actualEq);
+            Assert.AreNotEqual(0, actualEq.EP);
+            Assert.AreNotEqual(0, actualEq.CP);
+        }
+        [TestMethod]
+        public void TestSupportAttributes()
+        {
+            //Conntiene todos los atributos
+            int EPs = 0;
+            int CPs = 0;
+
+            Support actualSp = new Support(EPs, CPs);
+
+            Deck deckTest10 = new Deck();
+            deckTest10.CreateSupport();
+
+            //Equip Character
+            for (int i = 0; i < deckTest10.cartas.Count; i++)
+            {
+
+                if (deckTest10.cartas[i] is Support)
+                {
+                    actualSp = (deckTest10.cartas[i] as Support);
+                }
+            }
+            actualSp = (Support)deckTest10.cartas[0];
+
+            Assert.IsNotNull(actualSp);
+            Assert.AreNotEqual(0, actualSp.EP);
+            Assert.AreNotEqual(0, actualSp.CP);
+        }
+        [TestMethod]
         public void TestChAttack()
         {
             //El Character ataca a un Ch enemigo según sus atributos
@@ -69,11 +123,9 @@ namespace Pruebas_Cartas
         public void TestChIsDestroy()
         {
             //Cuanndo su RP llega a cero el Character es destruido
-        }
-        [TestMethod]
-        public void TestEqAttributes()
-        {
-            //Equip posee todos los atributos
+            //Revisión muertos
+
+
         }
         [TestMethod]
         public void TestEquipTA()
@@ -90,11 +142,7 @@ namespace Pruebas_Cartas
         {
             //Se equipa solo cuando posee la misma afinidad que el Character
         }
-        [TestMethod]
-        public void TestSupportAttributes()
-        {
-            //Conntiene todos los atributos
-        }
+        
         [TestMethod]
         public void TestSupportET()
         {
@@ -114,11 +162,6 @@ namespace Pruebas_Cartas
         public void TestCardPermaDeath()
         {
             //Nada de resurección, la destrucción de una carta es permamente  
-        }
-        [TestMethod]
-        public void TestGameOver()
-        {
-            //Condición: que se quede sin personajes
         }
     }
 }

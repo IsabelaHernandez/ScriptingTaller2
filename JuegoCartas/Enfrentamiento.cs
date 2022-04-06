@@ -67,11 +67,13 @@ public class Enfrentamiento
                 if ((jugador.cartas[i] as Character).RP <= 0)
                 {
                     jugador.cartas[i] = null;
+                    jugador.ContadorDeMuertos++;
                 }
 
                 if ((enemigo.cartas[i] as Character).RP <= 0)
                 {
                     enemigo.cartas[i] = null;
+                    enemigo.ContadorDeMuertos++;
                 }
 
 
@@ -85,7 +87,7 @@ public class Enfrentamiento
             if (jugador.cartas[i] is Character)
             {
                 actualChar = (jugador.cartas[i] as Character);
-
+                
             }
 
             if (jugador.cartas[i] is Support)
@@ -115,11 +117,13 @@ public class Enfrentamiento
             if ((jugador.cartas[i] as Character).RP <= 0)
             {
                 jugador.cartas[i] = null;
+                jugador.ContadorDeMuertos++;
             }
 
             if ((enemigo.cartas[i] as Character).RP <= 0)
             {
                 enemigo.cartas[i] = null;
+                enemigo.ContadorDeMuertos++;
             }
         }
 
