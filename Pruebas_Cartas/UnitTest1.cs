@@ -1,4 +1,5 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 
 namespace Pruebas_Cartas
 {
@@ -7,33 +8,62 @@ namespace Pruebas_Cartas
     {
         //Valores de prueba:
 
+
         //Pruebas unitarias para cada "combo" de valores
         [TestMethod]
-        public void TestDeck()
+        public void TestDeckLimit()
         {
             Deck deckTest01 = new Deck();
-            
+            deckTest01.LlenarDeck();
+
+            Console.WriteLine(deckTest01.chInsedeDeck);
+            Console.WriteLine(deckTest01.eqInsedeDeck);
+            Console.WriteLine(deckTest01.spInsedeDeck);
             //El Deck cumple con los límites de cartas 
-        }
-        [TestMethod]
-        public void TestDeckCP()
-        {
-            //El Deck no sobre pasa su CP al ser llenado
-        }
-        [TestMethod]
-        public void TestCardAttributes() 
-        { 
-            //Todas las cartas poeseen los atributos base
+            Assert.AreEqual(0, deckTest01.CPbaraja);
+            Assert.AreNotEqual(0, deckTest01.chInsedeDeck);
+            Assert.AreNotEqual(6, deckTest01.chInsedeDeck);
+            Assert.AreNotEqual(1, deckTest01.eqInsedeDeck);
+            Assert.AreNotEqual(6, deckTest01.spInsedeDeck);
+
         }
         [TestMethod]
         public void TestChAttributes()
         {
+            
             //El Character posee todos los atributos
+            int AP = 0;
+            int RP = 0;
+            int CP = 0;
+
+            Character actualChar = new Character(AP, RP, CP);
+
+            Deck deckTest03 = new Deck();
+            deckTest03.CreateCharacter();
+            //Equip Character
+            for (int i = 0; i < deckTest03.cartas.Count; i++)
+            {
+
+                if (deckTest03.cartas[i] is Character)
+                {
+                    actualChar = (deckTest03.cartas[i] as Character);
+                }
+            }
+            actualChar = (Character)deckTest03.cartas[0];
+
+            Assert.IsNotNull(actualChar);
+            Assert.AreNotEqual(0, actualChar.AP);
+            Assert.AreNotEqual(0, actualChar.RP);
+            Assert.AreNotEqual(0, actualChar.CP); 
         }
         [TestMethod]
         public void TestChAttack()
         {
             //El Character ataca a un Ch enemigo según sus atributos
+            //Enfrentamiento Batalla01 = new Enfrentamiento();
+            //Batalla01.BatallaAMuerte();
+
+
         }
         [TestMethod]
         public void TestChIsDestroy()

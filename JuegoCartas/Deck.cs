@@ -4,20 +4,17 @@ using System.Collections.Generic;
 public class Deck
 {
 	String deckName = "";
-	int charcaterAmount = 0;
-	int equipAmount = 0;
-	int supportAmount = 0;
 
-	int chCantidad = 5;
-	int eqCantidad = 4;
-	int spCantidad = 5;
+	public int chCantidad = 5;
+	public int eqCantidad = 4;
+	public int spCantidad = 5;
 
 	//Contadores de cartas dentro del Maso
 	public int chInsedeDeck = 0;
 	public int eqInsedeDeck = 0;
-	public int spIndideDeck = 0;
+	public int spInsedeDeck = 0;
 
-	int CPbaraja= 30;
+	public int CPbaraja= 30;
 
 	public List<Carta> cartas = new List<Carta>();
 		
@@ -34,14 +31,14 @@ public class Deck
 
 		int AP = aleatorioap.Next(1, 6);
 		int RP = aleatoriorp.Next(1, 6);
-		int CP = aleatoriocp.Next(1, 11);
+		int CP = aleatoriocp.Next(1, 10);
 
 		Character character = new Character(AP, RP, CP);
 
-		CPbaraja -= CP;
-
-		if (CPbaraja <= CP)
+	
+		if (CPbaraja >= CP)
 		{
+			CPbaraja -= CP;
 			cartas.Add(character);
 			chInsedeDeck++;
 		}
@@ -53,14 +50,13 @@ public class Deck
 		Random aleatoriocp = new Random();
 
 		int EP = aleatoriocp.Next(1, 6);
-		int CP = aleatoriocp.Next(1, 11);
+		int CP = aleatoriocp.Next(1, 6);
 
 		Equip equip = new Equip(EP, CP);
 
-		CPbaraja -= CP;
-
-		if (CPbaraja <= CP )
+		if (CPbaraja >= CP )
         {
+			CPbaraja -= CP;
 			cartas.Add(equip);
 			eqInsedeDeck++;
 		}		
@@ -72,16 +68,15 @@ public class Deck
 		Random aleatoriocp = new Random();
 
 		int EP = aleatoriocp.Next(1, 6);
-		int CP = aleatoriocp.Next(1, 11);
+		int CP = aleatoriocp.Next(1, 6);
 
 		Support support = new Support(EP, CP);
 
-		CPbaraja -= CP;
-
-		if (CPbaraja <= CP)
+		if (CPbaraja >= CP)
 		{
+			CPbaraja -= CP;
 			cartas.Add(support);
-			spIndideDeck++;
+			spInsedeDeck++;
 		}
 		
 		
@@ -90,27 +85,23 @@ public class Deck
 	public void LlenarDeck()
     {
 		//Llena la baraja con las cartas
-
-		while (CPbaraja < 0)
+		while(CPbaraja>0)
 		{
-			//En caso de tener problemas, usar los contadores de cartas aquí
-			for (int i = 0; i <= chCantidad; i++)
-			{
-				CreateCharacter();
-			}
-
-			for (int i = 0; i <= eqCantidad; i++)
-			{
-				CreateEquip();
-			}
-
-			for (int i = 0; i <= spCantidad; i++)
-			{
-				CreateSupport();
-			}
-
-		}		
-
+            for (int i = 0; i < chCantidad; i++)
+            {
+                CreateCharacter();
+            }
+            for (int i = 0; i < eqCantidad; i++)
+            {
+                CreateEquip();
+            }
+            for (int i = 0; i < spCantidad; i++)
+            {
+                CreateSupport();
+            }
+        }		
+		
+		
 	}
 	public void DestruirDeck()
     {
