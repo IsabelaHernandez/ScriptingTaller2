@@ -16,18 +16,53 @@ public class Enfrentamiento
     {
         //Aquí se van a agarrar las dos barajas
 
-        {
-            Deck deck = new Deck();
-            deck.LlenarDeck();
+        {           
+            jugador.LlenarDeck();
+            enemigo.LlenarDeck();
 
-            for (int i = 0; i < deck.cartas.Count; i++)
+            Character actualChar= null;
+
+            //Equip Character
+            for (int i = 0; i < jugador.cartas.Count; i++)
+            {
+               
+                if (jugador.cartas[i] is Character)
+                {
+                    actualChar = (jugador.cartas[i] as Character);
+
+                }
+
+                if (jugador.cartas[i] is Equip)
+                {
+                    actualChar.EquipCh(jugador.cartas[i] as Equip);
+                }
+
+            }
+
+            for (int i = 0; i < enemigo.cartas.Count; i++)
+            {
+                if (enemigo.cartas[i] is Character)
+                {
+                    actualChar = (enemigo.cartas[i] as Character);
+                }
+
+                if (enemigo.cartas[i] is Equip)
+                {
+                    actualChar.EquipCh(enemigo.cartas[i] as Equip);
+                }
+            }
+
+
+            for (int i = 0; i < jugador.cartas.Count && i < enemigo.cartas.Count ; i++)
             {
                 if(jugador.cartas[i] is Character && enemigo.cartas[i] is Character)
                 {
 
-                    //No sé si esto funcione 
-                    (jugador.cartas[i] as Character).AffinityCh(target);
+                   // (jugador.cartas[i] as Character).AssignTarget(enemigo.cartas[i] as Character);
+                   //(enemigo.cartas[i] as Character).AssignTarget(jugador.cartas[i] as Character);
 
+                    (jugador.cartas[i] as Character).AffinityCh(enemigo.cartas[i] as Character);
+                  
                     (jugador.cartas[i] as Character).RP -= (enemigo.cartas[i] as Character).AP;
                     (enemigo.cartas[i] as Character).RP -= (jugador.cartas[i] as Character).AP;
 

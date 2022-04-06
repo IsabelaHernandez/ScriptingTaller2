@@ -9,7 +9,7 @@ public class Deck
 	int supportAmount = 0;
 
 	int chCantidad = 5;
-	int eqCantidad = 10;
+	int eqCantidad = 4;
 	int spCantidad = 5;
 
 	//Contadores de cartas dentro del Maso

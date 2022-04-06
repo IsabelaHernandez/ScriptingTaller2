@@ -43,10 +43,10 @@ public class Character : Carta
 	}
 
 
-	public void AttackPointsCh()
+/*public void AttackPointsCh()
 	{
 
-	}
+	} */
 
 	public void AssociatedEquip(Equip equip)
     {
@@ -55,14 +55,23 @@ public class Character : Carta
 		if (slot1 == null)
         {
 			slot1 = associatedEquip;
+			associatedEquip.TAValue = Equip.TA.AP;
+			ModifyAP(associatedEquip.EP);
+
         }
 		else if (slot2 == null)
 		{
 			slot2 = associatedEquip;
+			associatedEquip.TAValue = Equip.TA.RP;
+			ModifyRP(associatedEquip.EP);
 		}
 		else if (slot3 == null)
 		{
 			slot3 = associatedEquip;
+			associatedEquip.TAValue = Equip.TA.ALL;
+			ModifyAP(associatedEquip.EP);
+			ModifyRP(associatedEquip.EP);
+
 		}
 		else
         {
@@ -71,19 +80,24 @@ public class Character : Carta
 
 	}
 
-	public void DisassociatedEquip()
+	public void DisassociatedEquip(Equip disassociatedEquip)
     {
 		if (slot3 != null)
         {
 			slot3 = null;
-        }
+			ModifyAP(-(disassociatedEquip.EP));
+			ModifyRP(-(disassociatedEquip.EP));
+
+		}
 		else if (slot2 != null)
 		{
 			slot2 = null;
+			ModifyRP(-(disassociatedEquip.EP));
 		}
 		else if (slot1 != null)
 		{
 			slot1 = null;
+			ModifyAP(-(disassociatedEquip.EP));
 		}
 	}
 
@@ -114,10 +128,10 @@ public class Character : Carta
 	}
 
 
-	public void AssignTarget(Character character)
+	/*public void AssignTarget(Character character)
 	{
 		target = character;
-	}
+	}*/
 
 
 	public void AffinityCh(Character target)

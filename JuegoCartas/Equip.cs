@@ -13,15 +13,17 @@ public class Equip : Carta
 	private int baseEP;
 	static Random random = new Random();
 
-	
+
 	//Random Enum
-	static TA RandomTAValue<TA>()
+	/*static TA RandomTAValue<TA>()
 	{
 		var values = Enum.GetValues(typeof(TA));
 		return (TA)values.GetValue(random.Next(values.Length));
 	}
 
-	TA TAValue = RandomTAValue<TA>();
+	TA TAValue = RandomTAValue<TA>(); */
+
+	public TA TAValue = 0;
 
 	public Equip( int ep, int cp)
 	{
@@ -35,13 +37,12 @@ public class Equip : Carta
 		private set => baseEP = value;
 	}
 
-	public void EffectEq(Character target)
+	/*public void EffectEq(Character target)
 	{
 		switch (TAValue)
         {
 			case TA.AP:
 				target.ModifyAP((int)EP); 
-				
 				break;
 
 			case TA.RP:
@@ -54,11 +55,8 @@ public class Equip : Carta
 				break;
         }	
 		
-	}
+	}*/
 
-	public void AffinityEq()
-	{
 
-	}
 }
 
